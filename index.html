@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Haxe is like other programming languages</title>
+<style>
+  html {
+    font-family: sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    margin: 0;
+    padding: 1em;
+  }
+  h1 {
+    font-weight: normal;
+    text-align: center;
+  }
+  h1 .language-name {
+    font-size: 1em;
+    font-weight: bold;
+  }
+  .case {
+    text-align: center;
+  }
+  .pair {
+    text-align: left;
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .case .card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  .case .card pre {
+    background: #fff;
+    flex-grow: 1;
+    padding: 0.5em;
+  }
+  footer {
+    font-size: 0.9em;
+    padding-top: 1em;
+    margin-top: 1em;
+    border-top: solid 1px #ccc;
+  }
+</style>
+<link rel="stylesheet" href="css/github.min.css">
+<script src="js/highlight.min.js" type="text/javascript"></script>
+</head>
+<body>
+  <h1>
+    <span class="language-name">Haxe</span> is like
+    <select id="language-select" class="language-name">
+      
+        
+      <option>ActionScript 3.0</option>
+        
+      
+        
+      <option>C#</option>
+        
+      
+        
+      <option>Go</option>
+        
+      
+        
+      
+        
+      <option>Kotlin</option>
+        
+      
+        
+      <option>Swift</option>
+        
+      
+        
+      <option selected>TypeScript</option>
+        
+      
+    </select>
+  </h1>
+  <div id="compare">
+  </div>
+  <footer>
+    <p>Made by <a href="https://github.com/joshtynjala">Josh Tynjala</a>, who also created <a href="https://feathersui.com/">Feathers UI</a> and is a core contibutor to <a href="https://openfl.org/">OpenFL</a>.</p>
+    <p>Thanks to the authors of the following pages for the inspiration, and for the code samples for each language used in the comparisons.</p>
+    <ul>
+      <li><a href="https://ttu.github.io/kotlin-is-like-csharp/">Kotlin is like C#</a></li>
+      <li><a href="https://gi-no.github.io/kotlin-is-like-typescript/">Kotlin is like TypeScript</a></li>
+      <li><a href="https://nilhcem.com/swift-is-like-kotlin/">Swift is like Kotlin</a></li>
+      <li><a href="https://repo.tiye.me/jiyinyiyong/swift-is-like-go/">Swift is like Go</a></li>
+    </ul>
+  </footer>
+  <script type="text/javascript">
+    const languages = JSON.parse(`[{"name":"ActionScript 3.0","id":"as3","snippets":[{"name":"Hello World","text":"package {\\n    import flash.display.Sprite;\\n    public class Main extends Sprite {\\n        public function Main() {\\n            trace(\\"Hello, world!\\");\\n        }\\n    }\\n}"},{"name":"Variables And Constants","text":"var myVariable = 42;\\nmyVariable = 50;\\nconst myConstant = 42;\\n// note: AS3 does not support type inference\\n// these variables will default to the * type"},{"name":"Explicit Types","text":"var explicitDouble:Number = 70.0;"},{"name":"Type Coercion","text":"var label:String = \\"The width is \\";\\nvar width:int = 94;\\nvar widthLabel:String = label + width;\\n// The width is 94"},{"name":"String Interpolation","text":"var apples:int = 3;\\nvar oranges:int = 5;\\nvar fruitSummary:String = \\"I have \\" + (apples + oranges) +\\n                   \\" pieces of fruit.\\";"},{"name":"Range Operator","text":"// AS3 doesn't include a range operator\\n// it uses C-style for loops instead.\\nconst names:Array = [\\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\"];\\nconst count:int = names.length;\\nfor (var i:int = 0; i < count; i++) {\\n    trace(\\"Person \\" + (i + 1) + \\" is called \\" + names[i]);\\n}\\n// Person 1 is called Anna\\n// Person 2 is called Alex\\n// Person 3 is called Brian\\n// Person 4 is called Jack"},{"name":"For Each","text":"var names:Array = [\\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\"];\\nfor each (var name:String in names) {\\n    trace(\\"Person is called \\" + name);\\n}\\n// Person is called Anna\\n// Person is called Alex\\n// Person is called Brian\\n// Person is called Jack"},{"name":"Arrays","text":"var shoppingList:Array = [\\"catfish\\", \\"water\\",\\n    \\"tulips\\", \\"blue paint\\"];\\nshoppingList[1] = \\"bottle of water\\";"},{"name":"Maps","text":"var occupations:Dictionary = new Dictionary();\\noccupations[\\"Malcolm\\"] = \\"Captain\\";\\noccupations[\\"Kaylee\\"] = \\"Mechanic\\";\\noccupations[\\"Jayne\\"] = \\"Public Relations\\";"},{"name":"Empty Collections","text":"var emptyArray:Array = [];\\nvar emptyDictionary:Dictionary = new Dictionary();"},{"name":"Functions","text":"function greet(name:String, day:String):String {\\n    return \\"Hello \\" + name + \\", today is \\" + day + \\".\\";\\n}\\ngreet(\\"Bob\\", \\"Tuesday\\");\\n// Hello Bob, today is Tuesday"},{"name":"Variable Number Of Arguments","text":"function sumOf(...numbers: Array):Number {\\n    var sum:Number = 0;\\n    for each(var number:Number in numbers) {\\n        sum += number;\\n    }\\n    return sum;\\n}\\nsumOf(42, 597, 12);"},{"name":"Function Type","text":"function makeIncrementer():Function {\\n    function addOne(number:Number):Number {\\n        return 1 + number;\\n    }\\n    return addOne;\\n}\\nvar increment:Function = makeIncrementer();\\nincrement(7);\\n// AS3 doesn't support specifying parameters and\\n// returns for function types"},{"name":"Map","text":"var numbers:Array = [20, 19, 7, 12];\\nfunction mapFunction(it:Number, index:int, source:Array):Number\\n{\\n    return 3 * it;\\n}\\nnumbers.map(mapFunction);\\n// [ 60, 57, 21, 36 ]"},{"name":"Sort","text":"[1, 5, 3, 12, 2].sort();\\n// [ 1, 2, 3, 5, 12 ]"},{"name":"Class Declaration","text":"package {\\n    public class Shape {\\n        public var numberOfSides:int = 0;\\n        public function simpleDescription():String {\\n            return \\"A shape with \\" +\\n                this.numberOfSides + \\" sides.\\";\\n        }\\n    }\\n}"},{"name":"Class Usage","text":"var shape:Shape = new Shape();\\nshape.numberOfSides = 7;\\nvar shapeDescription:String = shape.simpleDescription();\\n// A shape with 7 sides."},{"name":"Subclass","text":"package {\\n    public class NamedShape {\\n        public var numberOfSides:int = 0;\\n        public var name:String;\\n\\n        public function NamedShape(name:String) {\\n            this.name = name;\\n        }\\n\\n        public function simpleDescription():String {\\n            return \\"A shape with \\" + numberOfSides +\\n                \\" sides.\\";\\n        }\\n    }\\n}\\n\\npackage {\\n    public class Square extends NamedShape {\\n        public var sideLength:Number;\\n\\n        public function Square(sideLength:Number, name:String) {\\n            super(name);\\n            this.sideLength = sideLength;\\n            numberOfSides = 4;\\n        }\\n\\n        public function area():Number {\\n            return sideLength * sideLength;\\n        }\\n\\n        public function simpleDescription():String {\\n            return \\"A square with sides of length \\" +\\n                sideLength + \\".\\";\\n        }\\n    }\\n}\\n\\nvar test:Square = new Square(5.2, \\"square\\");\\ntest.area();\\ntest.simpleDescription();"},{"name":"Checking Type","text":"var movieCount:int = 0;\\nvar songCount:int = 0;\\n\\nfor each (var item:MediaItem in library) {\\n    if (item is Movie) {\\n        ++movieCount;\\n    } else if (item is Song) {\\n        ++songCount;\\n    }\\n}"},{"name":"Downcasting","text":"for each (var current:MediaItem in library) {\\n    var movie = current as Movie;\\n    if (movie != null) {\\n        trace(\\"Movie: '\\" + movie.name + \\", \\" +\\n\\t        \\"dir. \\" + movie.director);\\n    }\\n}"},{"name":"Protocol","text":"package {\\n    public interface Nameable {\\n        function name():String;\\n    }\\n}\\n\\nfunction f(x:Nameable) {\\n    trace(\\"Name is \\" + x.name());\\n}"}]},{"name":"C#","id":"csharp","snippets":[{"name":"Hello World","text":"public void Main() \\n{\\n    Console.WriteLine(\\"Hello, world!\\");\\n}\\n\\n// C# 9 supports top-level statements\\nConsole.WriteLine(\\"Hello, world!\\");"},{"name":"Variables And Constants","text":"var myVariable = 42;\\nmyVariable = 50;\\n\\n// C# doesn't have local runtime constants"},{"name":"Explicit Types","text":"double explicitDouble = 70.0;"},{"name":"Type Coercion","text":"var label = \\"The width is \\";\\nvar width = 94;\\nvar widthLabel = label + width;\\n// The width is 94"},{"name":"String Interpolation","text":"var apples = 3;\\nvar oranges = 5;\\nvar fruitSummary = $\\"I have {apples + oranges} \\" +\\n                   \\"pieces of fruit.\\";"},{"name":"Range Operator","text":"var names = new[] { \\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\" };\\nvar count = names.Count();\\n\\nforeach (var i in Enumerable.Range(0, count))\\n{\\n    Console.WriteLine($\\"Person {i + 1} is called {names[i]}\\");\\n}\\n// Person 1 is called Anna\\n// Person 2 is called Alex\\n// Person 3 is called Brian\\n// Person 4 is called Jack\\n"},{"name":"For Each","text":"var names = new List<string> { \\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\" };\\n\\nforeach (var name in names)\\n{\\n    Console.WriteLine($\\"Person is called {name}\\");\\n}\\n\\nnames.ForEach(name => Console.WriteLine($\\"Person is called {name}\\"));\\n\\n// Person is called Anna\\n// Person is called Alex\\n// Person is called Brian\\n// Person is called Jack"},{"name":"Arrays","text":"var shoppingList = new[] { \\"catfish\\", \\"water\\",\\n    \\"tulips\\", \\"blue paint\\" };\\nshoppingList[1] = \\"bottle of water\\";"},{"name":"Maps","text":"var occupationsMutable = new Dictionary<string, string>\\n{\\n    [\\"Malcolm\\"] = \\"Captain\\",\\n    [\\"Kaylee\\"] = \\"Mechanic\\"\\n};\\noccupationsMutable[\\"Jayne\\"] = \\"Public Relations\\";"},{"name":"Empty Collections","text":"var emptyList = new List<string>();\\nvar emptyDictionary = new Dictionary<string, string>();"},{"name":"Functions","text":"string Greet(string name, string day)\\n{\\n    return $\\"Hello {name}, today is {day}.\\";\\n}\\n\\nvar text = Greet(\\"Bob\\", \\"Tuesday\\");\\n// Hello Bob, today is Tuesday"},{"name":"Variable Number Of Arguments","text":"int SumOf(params int[] numbers)\\n{\\n    var sum = 0;\\n    foreach (var number in numbers) \\n        sum += number;\\n    return sum;\\n}\\n\\nvar sum = SumOf(42, 597, 12);\\n\\n// SumOf() can also be written in a shorter way:\\nint SumOf(params int[] numbers) => numbers.Sum();"},{"name":"Function Type","text":"Func<int, int> MakeIncrementer()\\n{\\n    int addOne(int number) => 1 + number;\\n    return addOne;\\n}\\n\\nvar increment = MakeIncrementer();\\nvar result = increment(7);\\n\\n// MakeIncrementer can also be written in a shorter way:\\nFunc<int, int> MakeIncrementer() => i => 1 + i;"},{"name":"Map","text":"var numbers = new[] { 20, 19, 7, 12 };\\nvar multiplied = numbers.Select(e => 3 * e);\\n// [ 60, 57, 21, 36 ]"},{"name":"Sort","text":"var ordered = new[] { 1, 5, 3, 12, 2 }.OrderBy(i => i);\\n// [ 1, 2, 3, 5, 12 ]"},{"name":"Class Declaration","text":"class Shape \\n{\\n    public int NumberOfSides { get; set; }\\n    public string SimpleDescription() => \\n        $\\"A shape with {NumberOfSides} sides.\\";\\n}"},{"name":"Class Usage","text":"var shape = new Shape();\\nshape.NumberOfSides = 7;\\nvar shapeDescription = shape.SimpleDescription();\\n// A shape with 7 sides."},{"name":"Subclass","text":"class NamedShape\\n{\\n    private readonly string _name;\\n\\n    public NamedShape(string name) => _name = name;\\n\\n    protected int NumberOfSides { get; set; }\\n\\n    public virtual string SimpleDescription() =>\\n         $\\"A shape with {NumberOfSides} sides.\\";\\n}\\n\\nclass Square: NamedShape\\n{\\n    private readonly double _sideLength;\\n\\n    public Square(double sideLength, string name) : base(name)\\n    {\\n        _sideLength = sideLength;\\n        NumberOfSides = 4;\\n    }\\n\\n    public double Area() => Math.Pow(_sideLength, 2);\\n\\n    override public string SimpleDescription() =>\\n        $\\"A square with sides of length {_sideLength}.\\";\\n}\\n\\nvar square = new Square(5.2, \\"My square\\");\\nvar area = square.Area();\\nvar desc = square.SimpleDescription();"},{"name":"Checking Type","text":"var movieCount = 0;\\nvar songCount = 0;\\n\\nforeach (var item in library) \\n{\\n    if (item is Movie)\\n        ++movieCount;\\n    else if (item is Song)\\n        ++songCount;\\n}\\n"},{"name":"Downcasting","text":"foreach (var current in library) {\\n    var movie = current as Movie;\\n    if (movie != null) {\\n        Console.WriteLine($\\"Movie: '{movie.name}', \\" +\\n            $\\"dir. {movie.director}\\");\\n    }\\n}"},{"name":"Protocol","text":"interface INameable \\n{\\n    string Name();\\n}\\n\\nvoid GenericMethod<T>(T x) where T : INameable\\n{\\n    Console.WriteLine(\\"Name is \\" + x.Name());\\n}\\n\\nclass Person : INameable\\n{\\n    public string Name() => \\"Person A\\";\\n}"}]},{"name":"Go","id":"go","snippets":[{"name":"Hello World","text":"package main\\n\\nimport \\"fmt\\"\\n\\nfunc main() {\\n    fmt.Println(\\"Hello, world!\\")\\n}"},{"name":"Variables And Constants","text":"var myVariable = 42\\nmyVariable = 50\\nconst myConstant = 42"},{"name":"Explicit Types","text":"const explicitDouble float64 = 70"},{"name":"Type Coercion","text":"const label = \\"The width is \\"\\nconst width = 94\\nvar widthLabel = label + strconv.Itoa(width)\\n// The width is 94"},{"name":"String Interpolation","text":"const apples = 3\\nconst oranges = 5\\nfruitSummary := fmt.Sprintf(\\"I have %d pieces of fruit.\\", apples + oranges)"},{"name":"Range Operator","text":"names := [4]string{\\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\"}\\nfor i, value := range(names) {\\n    fmt.Printf(\\"Person %v is called %v\\\\n\\", (i + 1), value)\\n}\\n// Person 1 is called Anna\\n// Person 2 is called Alex\\n// Person 3 is called Brian\\n// Person 4 is called Jack"},{"name":"For Each","text":"names := [4]string{\\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\"}\\nfor _, value := range(names) {\\n    fmt.Printf(\\"Person is called %v\\\\n\\", value)\\n}\\n// Person is called Anna\\n// Person is called Alex\\n// Person is called Brian\\n// Person is called Jack"},{"name":"Arrays","text":"var shoppingList = []string{\\"catfish\\", \\"water\\",\\n    \\"tulips\\", \\"blue paint\\"}\\nshoppingList[1] = \\"bottle of water\\""},{"name":"Maps","text":"var occupations = map[string]string{\\n    \\"Malcolm\\": \\"Captain\\",\\n    \\"Kaylee\\": \\"Mechanic\\",\\n}\\noccupations[\\"Jayne\\"] = \\"Public Relations\\""},{"name":"Empty Collections","text":"var emptyArray []string\\nvar emptyDictionary = make(map[interface{}]interface{})"},{"name":"Functions","text":"func greet(name, day string) string {\\n    return fmt.Sprintf(\\"Hello %v, today is %v.\\", name, day)\\n}\\n\\nfunc main() {\\n    greet(\\"Bob\\", \\"Tuesday\\")\\n}\\n// Hello Bob, today is Tuesday"},{"name":"Variable Number Of Arguments","text":"func sumOf(numbers ...int) int {\\n    var sum = 0\\n    for _, number := range(numbers) {\\n        sum += number\\n    }\\n    return sum\\n}\\n\\nfunc main() {\\n    sumOf(42, 597, 12)\\n    sumOf([]int{42, 597, 12}...)\\n}"},{"name":"Function Type","text":"func makeIncrementer() func(int) int {\\n    return func (number int) int {\\n        return 1 + number\\n    }\\n}\\n\\nfunc main() {\\n    increment := makeIncrementer()\\n    increment(7)\\n}"},{"name":"Map","text":"mapFunc := func(slice interface{}, fn func(a interface{}) interface{}) interface{} {\\n    val := reflect.ValueOf(slice)\\n    out := reflect.MakeSlice(reflect.TypeOf(slice), val.Len(), val.Cap())\\n    for i := 0; i < val.Len(); i++ {\\n        out.Index(i).Set(\\n            reflect.ValueOf(fn(val.Index(i).Interface())),\\n        )\\n    }\\n    return out.Interface()\\n}\\na := mapFunc([]int{1, 2, 3, 4}, func(val interface{}) interface{} {\\n    return val.(int) * 3\\n})\\n// [ 60, 57, 21, 36 ]"},{"name":"Sort","text":"sort.Sort(sort.Reverse(sort.IntSlice([]int{1, 5, 3, 12, 2})))\\n// [ 1, 2, 3, 5, 12 ]"},{"name":"Class Declaration","text":"type Shape struct {\\n    numberOfSides int\\n}\\nfunc (p *Shape) simpleDescription() string {\\n    return fmt.Sprintf(\\"A shape with %d sides.\\",\\n        p.numberOfSides)\\n}"},{"name":"Class Usage","text":"var shape = new(Shape)\\nshape.numberOfSides = 7\\nvar shapeDescription = shape.simpleDescription()\\n// A shape with 7 sides."},{"name":"Subclass","text":"type NamedShape struct {\\n    numberOfSides int\\n    name string\\n}\\nfunc NewNamedShape(name string) *NamedShape {\\n    return &NamedShape{\\n        name: name,\\n    }\\n}\\nfunc (p *NamedShape) SimpleDescription() string {\\n    return fmt.Sprintf(\\"A shape with %d sides.\\",\\n        p.numberOfSides)\\n}\\n\\ntype Square struct {\\n    *NamedShape\\n    sideLength float64\\n}\\nfunc NewSquare(sideLength float64, name string) *Square {\\n    return &Square{\\n        NamedShape: NewNamedShape(name),\\n        sideLength: sideLength,\\n    }\\n}\\nfunc (p *Square) Area() float64 {\\n    return p.sideLength * p.sideLength\\n}\\nfunc (p *Square) SimpleDescription() string {\\n    return fmt.Sprintf(\\"A square with sides of length %d.\\", p.sideLength)\\n}\\n\\nfunc main() {\\n    a := NewSquare(5.2, \\"square\\")\\n    a.Area()\\n    a.SimpleDescription()\\n}"},{"name":"Checking Type","text":"var movieCount = 0\\nvar songCount = 0\\n\\nfor _, item := range(library) {\\n    if _, ok := item.(Movie); ok {\\n        movieCount++\\n    } else if _, ok := item.(Song); ok {\\n        songCount++\\n    }\\n}"},{"name":"Downcasting","text":"for object := range someObjects {\\n    movie := object.(Movie)\\n    fmt.Printf(\\"Movie: '%s', dir. %s\\", movie.name, movie.director)\\n}"},{"name":"Protocol","text":"type Nameabler interface {\\n    func Name() string\\n}\\n\\nfunc F(x Nameabler) {\\n    fmt.Println(\\"Name is \\" + x.Name())\\n}"}]},{"name":"Haxe","id":"haxe","snippets":[{"name":"Hello World","text":"class Main {\\n    public static function main() {\\n        trace(\\"Hello, world!\\");\\n    }\\n}"},{"name":"Variables And Constants","text":"var myVariable = 42;\\nmyVariable = 50;\\nfinal myConstant = 42;"},{"name":"Explicit Types","text":"final explicitDouble:Float = 70.0;"},{"name":"Type Coercion","text":"const label = \\"The width is \\";\\nconst width = 94;\\nconst widthLabel = label + width;\\n// The width is 94"},{"name":"String Interpolation","text":"final apples = 3;\\nfinal oranges = 5;\\nfinal fruitSummary = 'I have \${apples + oranges} ' +\\n                   'pieces of fruit.';\\n\\n// use $ instead of \${} for simple var names\\nfinal totalFruit = apples + oranges;\\nfinal fruitSummary = 'I have $totalFruit ' +\\n                   'pieces of fruit.';\\n"},{"name":"Range Operator","text":"final names = [\\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\"];\\nfinal count = names.length;\\nfor (i in 0...count) {\\n    trace('Person \${i + 1} is called \${names[i]}');\\n}\\n// Person 1 is called Anna\\n// Person 2 is called Alex\\n// Person 3 is called Brian\\n// Person 4 is called Jack"},{"name":"For Each","text":"var names = [\\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\"];\\nfor (name in names) {\\n    trace('Person is called $name');\\n}\\n// Person is called Anna\\n// Person is called Alex\\n// Person is called Brian\\n// Person is called Jack"},{"name":"Arrays","text":"final shoppingList = [\\"catfish\\", \\"water\\",\\n    \\"tulips\\", \\"blue paint\\"];\\nshoppingList[1] = \\"bottle of water\\";"},{"name":"Maps","text":"var occupations = [\\n    \\"Malcolm\\" => \\"Captain\\",\\n    \\"Kaylee\\" => \\"Mechanic\\"\\n];\\noccupations.set(\\"Jayne\\", \\"Public Relations\\");"},{"name":"Empty Collections","text":"var emptyArray:Array<String> = [];\\nvar emptyDictionary:Map<String, String> = [];"},{"name":"Functions","text":"function greet(name:String, day:String):String {\\n    return 'Hello \${name}, today is \${day}.';\\n}\\ngreet(\\"Bob\\", \\"Tuesday\\");\\n// Hello Bob, today is Tuesday"},{"name":"Variable Number Of Arguments","text":"function sumOf(...numbers: number[]): number {\\n    let sum = 0;\\n    for (let number of numbers) {\\n        sum += number;\\n    }\\n    return sum;\\n}\\nsumOf(42, 597, 12);"},{"name":"Function Type","text":"function makeIncrementer():(Float) -> Float {\\n    function addOne(number: Float): Float {\\n        return 1 + number;\\n    }\\n    return addOne;\\n}\\nvar increment = makeIncrementer();\\nincrement(7);\\n\\n// makeIncrementer can also be written in a shorter way:\\nvar makeIncrementer = () -> (number: Float) -> 1 + number;"},{"name":"Map","text":"final numbers = [20, 19, 7, 12];\\nnumbers.map(it -> 3 * it);\\n// [ 60, 57, 21, 36 ]"},{"name":"Sort","text":"[1, 5, 3, 12, 2].sort((a, b) -> a - b);\\n// [ 1, 2, 3, 5, 12 ]"},{"name":"Class Declaration","text":"class Shape {\\n    public var numberOfSides = 0;\\n    public function simpleDescription():String {\\n        return 'A shape with $numberOfSides sides.';\\n    }\\n}"},{"name":"Class Usage","text":"var shape = new Shape();\\nshape.numberOfSides = 7;\\nvar shapeDescription = shape.simpleDescription();\\n// A shape with 7 sides."},{"name":"Subclass","text":"class NamedShape {\\n    public var numberOfSides:Int = 0;\\n    public var name:String;\\n\\n    public function new(name:String) {\\n        this.name = name;\\n    }\\n\\n    public function simpleDescription():string {\\n        return 'A shape with $numberOfSides sides.';\\n    }\\n}\\n\\nclass Square extends NamedShape {\\n    public var sideLength:Float;\\n\\n    public function new(sideLength:Float, name: string) {\\n        super(name);\\n        this.sideLength = sideLength;\\n        this.numberOfSides = 4;\\n    }\\n\\n    public function area():Float {\\n        return sideLength * sideLength;\\n    }\\n\\n    public function simpleDescription():String {\\n        return 'A square with sides of length $sideLength.';\\n    }\\n}\\n\\nvar test = new Square(5.2, \\"square\\");\\ntest.area();\\ntest.simpleDescription();"},{"name":"Checking Type","text":"var movieCount = 0;\\nvar songCount = 0;\\n\\nfor (item in library) {\\n    if (Std.isOfType(item, Movie)) {\\n        ++movieCount;\\n    } else if (Std.isOfType(item, Song)) {\\n        ++songCount;\\n    }\\n}"},{"name":"Downcasting","text":"for (current in library) {\\n    var movie = Std.downcast(current, Movie);\\n    if (movie != null) {\\n        trace('Movie: \\\\'\${movie.name}\\\\', ' +\\n\\t        'dir. \${movie.director}')\\n    }\\n}"},{"name":"Protocol","text":"interface Nameable {\\n    function name():String;\\n}\\n\\nfunction f(x:Nameable) {\\n    trace('Name is \${x.name()}');\\n}"}]},{"name":"Kotlin","id":"kotlin","snippets":[{"name":"Hello World","text":"println(\\"Hello, world!\\")"},{"name":"Variables And Constants","text":"var myVariable = 42\\nmyVariable = 50\\nval myConstant = 42"},{"name":"Explicit Types","text":"val explicitDouble: Double = 70.0"},{"name":"Type Coercion","text":"val label = \\"The width is \\"\\nval width = 94\\nval widthLabel = label + width\\n// The width is 94"},{"name":"String Interpolation","text":"val apples = 3\\nval oranges = 5\\nval fruitSummary = \\"I have \${apples + oranges} \\" +\\n                   \\"pieces of fruit.\\""},{"name":"Range Operator","text":"val names = arrayOf(\\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\")\\nval count = names.count()\\nfor (i in 0..count - 1) {\\n    println(\\"Person \${i + 1} is called \${names[i]}\\")\\n}\\n// Person 1 is called Anna\\n// Person 2 is called Alex\\n// Person 3 is called Brian\\n// Person 4 is called Jack"},{"name":"For Each","text":"val names = arrayOf(\\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\")\\n\\nfor (name in names) {\\n    println(\\"Person is called $name\\")\\n}\\n\\nnames.forEach { println(\\"Person is called $it\\") }\\n\\n// Person is called Anna\\n// Person is called Alex\\n// Person is called Brian\\n// Person is called Jack"},{"name":"Arrays","text":"val shoppingList = arrayOf(\\"catfish\\", \\"water\\",\\n    \\"tulips\\", \\"blue paint\\")\\nshoppingList[1] = \\"bottle of water\\""},{"name":"Maps","text":"val occupations = mutableMapOf(\\n    \\"Malcolm\\" to \\"Captain\\",\\n    \\"Kaylee\\" to \\"Mechanic\\"\\n)\\noccupations[\\"Jayne\\"] = \\"Public Relations\\""},{"name":"Empty Collections","text":"val emptyArray = arrayOf<String>()\\nval emptyMap = mapOf<String, Float>()"},{"name":"Functions","text":"fun greet(name: String, day: String): String {\\n    return \\"Hello $name, today is $day.\\"\\n}\\ngreet(\\"Bob\\", \\"Tuesday\\")\\n// Hello Bob, today is Tuesday"},{"name":"Variable Number Of Arguments","text":"fun sumOf(vararg numbers: Int): Int {\\n    var sum = 0\\n    for (number in numbers) {\\n        sum += number\\n    }\\n    return sum\\n}\\nsumOf(42, 597, 12)\\n\\n// sumOf() can also be written in a shorter way:\\nfun sumOf(vararg numbers: Int) = numbers.sum()"},{"name":"Function Type","text":"fun makeIncrementer(): (Int) -> Int {\\n    val addOne = fun(number: Int): Int {\\n        return 1 + number\\n    }\\n    return addOne\\n}\\nval increment = makeIncrementer()\\nincrement(7)\\n\\n// makeIncrementer can also be written in a shorter way:\\nfun makeIncrementer() = fun(number: Int) = 1 + number"},{"name":"Map","text":"val numbers = listOf(20, 19, 7, 12)\\nnumbers.map { 3 * it }\\n// [ 60, 57, 21, 36 ]"},{"name":"Sort","text":"val ordered = listOf(1, 5, 3, 12, 2).sorted()\\n// [ 1, 2, 3, 5, 12 ]"},{"name":"Class Declaration","text":"class Shape {\\n    var numberOfSides = 0\\n    fun simpleDescription() =\\n        \\"A shape with $numberOfSides sides.\\"\\n}"},{"name":"Class Usage","text":"var shape = Shape()\\nshape.numberOfSides = 7\\nvar shapeDescription = shape.simpleDescription()\\n// A shape with 7 sides."},{"name":"Subclass","text":"open class NamedShape(val name: String) {\\n    var numberOfSides = 0\\n\\n    open fun simpleDescription() =\\n        \\"A shape with $numberOfSides sides.\\"\\n}\\n\\nclass Square(var sideLength: Double, name: String) :\\n        NamedShape(name) {\\n    init {\\n        numberOfSides = 4\\n    }\\n\\n    fun area() = sideLength.pow(2)\\n\\n    override fun simpleDescription() =\\n        \\"A square with sides of length $sideLength.\\"\\n}\\n\\nval square = Square(5.2, \\"My square\\")\\nval area = square.area()\\nval desc = square.simpleDescription()"},{"name":"Checking Type","text":"var movieCount = 0\\nvar songCount = 0\\n\\nfor (item in library) {\\n    if (item is Movie) {\\n        ++movieCount\\n    } else if (item is Song) {\\n        ++songCount\\n    }\\n}"},{"name":"Downcasting","text":"for (current in library) {\\n    if (current is Movie) {\\n        println(\\"Movie: '\${current.name}', \\" +\\n\\t    \\"dir. \${current.director}\\")\\n    }\\n}\\n// Kotlin doesn't have a built-in way to downcast,\\n// but the type can be checked with \`is\`"},{"name":"Protocol","text":"interface Nameable {\\n    fun name(): String\\n}\\n\\nfun f<T: Nameable>(x: T) {\\n    println(\\"Name is \\" + x.name())\\n}"}]},{"name":"Swift","id":"swift","snippets":[{"name":"Hello World","text":"print(\\"Hello, world!\\")"},{"name":"Variables And Constants","text":"var myVariable = 42\\nmyVariable = 50\\nlet myConstant = 42"},{"name":"Explicit Types","text":"let explicitDouble: Double = 70"},{"name":"Type Coercion","text":"let label = \\"The width is \\"\\nlet width = 94\\nlet widthLabel = label + String(width)\\n// The width is 94"},{"name":"String Interpolation","text":"let apples = 3\\nlet oranges = 5\\nlet fruitSummary = \\"I have \\\\(apples + oranges) \\" +\\n                   \\"pieces of fruit.\\""},{"name":"Range Operator","text":"let names = [\\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\"]\\nlet count = names.count\\nfor i in 0..<count {\\n    print(\\"Person \\\\(i + 1) is called \\\\(names[i])\\")\\n}\\n// Person 1 is called Anna\\n// Person 2 is called Alex\\n// Person 3 is called Brian\\n// Person 4 is called Jack"},{"name":"For Each","text":"let names = [\\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\"]\\nfor name in names {\\n    print(\\"Person is called \\\\(name)\\")\\n}\\n// Person is called Anna\\n// Person is called Alex\\n// Person is called Brian\\n// Person is called Jack"},{"name":"Arrays","text":"var shoppingList = [\\"catfish\\", \\"water\\",\\n    \\"tulips\\", \\"blue paint\\"]\\nshoppingList[1] = \\"bottle of water\\""},{"name":"Maps","text":"var occupations = [\\n    \\"Malcolm\\": \\"Captain\\",\\n    \\"Kaylee\\": \\"Mechanic\\",\\n]\\noccupations[\\"Jayne\\"] = \\"Public Relations\\""},{"name":"Empty Collections","text":"let emptyArray = [String]()\\nlet emptyDictionary = [String: Float]()"},{"name":"Functions","text":"func greet(name: String, day: String) -> String {\\n    return \\"Hello \\\\(name), today is \\\\(day).\\"\\n}\\ngreet(\\"Bob\\", \\"Tuesday\\")\\n// Hello Bob, today is Tuesday"},{"name":"Variable Number Of Arguments","text":"func sumOf(_ numbers: Int...) -> Int {\\n    var sum = 0\\n    for number in numbers {\\n        sum += number\\n    }\\n    return sum\\n}\\nsumOf(42, 597, 12)"},{"name":"Function Type","text":"func makeIncrementer() -> (Int -> Int) {\\n    func addOne(number: Int) -> Int {\\n        return 1 + number\\n    }\\n    return addOne\\n}\\nlet increment = makeIncrementer()\\nincrement(7)"},{"name":"Map","text":"var numbers = [20, 19, 7, 12]\\nnumbers.map({ number in 3 * number })\\n// [ 60, 57, 21, 36 ]"},{"name":"Sort","text":"var mutableArray = [1, 5, 3, 12, 2]\\nmutableArray.sort()\\n// [ 1, 2, 3, 5, 12 ]"},{"name":"Class Declaration","text":"class Shape {\\n    var numberOfSides = 0\\n    func simpleDescription() -> String {\\n        return \\"A shape with \\\\(numberOfSides) sides.\\"\\n    }\\n}"},{"name":"Class Usage","text":"var shape = Shape()\\nshape.numberOfSides = 7\\nvar shapeDescription = shape.simpleDescription()\\n// A shape with 7 sides."},{"name":"Subclass","text":"class NamedShape {\\n    var numberOfSides: Int = 0\\n    let name: String\\n\\n    init(name: String) {\\n        self.name = name\\n    }\\n\\n    func simpleDescription() -> String {\\n        return \\"A shape with \\\\(numberOfSides) sides.\\"\\n    }\\n}\\n\\nclass Square: NamedShape {\\n    var sideLength: Double\\n\\n    init(sideLength: Double, name: String) {\\n        self.sideLength = sideLength\\n        super.init(name: name)\\n        self.numberOfSides = 4\\n    }\\n\\n    func area() -> Double {\\n        return sideLength * sideLength\\n    }\\n\\n    override func simpleDescription() -> String {\\n        return \\"A square with sides of length \\" +\\n\\t       sideLength + \\".\\"\\n    }\\n}\\n\\nlet test = Square(sideLength: 5.2, name: \\"square\\")\\ntest.area()\\ntest.simpleDescription()"},{"name":"Checking Type","text":"var movieCount = 0\\nvar songCount = 0\\n\\nfor item in library {\\n    if item is Movie {\\n        movieCount += 1\\n    } else if item is Song {\\n        songCount += 1\\n    }\\n}"},{"name":"Downcasting","text":"for current in library {\\n    if let movie = current as? Movie {\\n        print(\\"Movie: '\\\\(movie.name)', \\" +\\n            \\"dir. \\\\(movie.director)\\")\\n    }\\n}"},{"name":"Protocol","text":"protocol Nameable {\\n    func name() -> String\\n}\\n\\nfunc f<T: Nameable>(x: T) {\\n    print(\\"Name is \\" + x.name())\\n}"}]},{"name":"TypeScript","id":"ts","snippets":[{"name":"Hello World","text":"console.log(\\"Hello, world!\\");"},{"name":"Variables And Constants","text":"let myVariable = 42;\\nmyVariable = 50;\\nconst myConstant = 42;"},{"name":"Explicit Types","text":"const explicitDouble: number = 70;"},{"name":"Type Coercion","text":"const label = \\"The width is \\";\\nconst width = 94;\\nconst widthLabel = label + width;\\n// The width is 94"},{"name":"String Interpolation","text":"const apples = 3;\\nconst oranges = 5;\\nconst fruitSummary = \`I have \${apples + oranges} \` +\\n                   \\"pieces of fruit.\\";"},{"name":"Range Operator","text":"import * as _ from 'lodash';\\nconst names = [\\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\"];\\nconst count = names.length;\\nfor (let i of _.range(0, count)) {\\n    console.log(\`Person \${i + 1} is called \${names[i]}\`)\\n}\\n// Person 1 is called Anna\\n// Person 2 is called Alex\\n// Person 3 is called Brian\\n// Person 4 is called Jack"},{"name":"For Each","text":"import * as _ from 'lodash';\\nconst names = [\\"Anna\\", \\"Alex\\", \\"Brian\\", \\"Jack\\"];\\nfor (let name of names) {\\n    console.log(\`Person is called \${name}\`)\\n}\\n// Person is called Anna\\n// Person is called Alex\\n// Person is called Brian\\n// Person is called Jack"},{"name":"Arrays","text":"let shoppingList = [\\"catfish\\", \\"water\\",\\n    \\"tulips\\", \\"blue paint\\"];\\nshoppingList[1] = \\"bottle of water\\";"},{"name":"Maps","text":"let occupations = new Map([\\n    [\\"Malcolm\\", \\"Captain\\"],\\n    [\\"Kaylee\\", \\"Mechanic\\"]\\n]);\\noccupations.set(\\"Jayne\\", \\"Public Relations\\");\\n\\n// alternatively, object literals work like maps with string keys\\nlet occupations = {\\n    \\"Malcolm\\": \\"Captain\\",\\n    \\"Kaylee\\": \\"Mechanic\\",\\n};\\noccupations[\\"Jayne\\"] = \\"Public Relations\\";"},{"name":"Empty Collections","text":"const emptyArray: string[] = [];\\nconst emptyDictionary: {[key: string]: number} = {};\\n"},{"name":"Functions","text":"function greet(name: string, day: string): string {\\n    return \`Hello \${name}, today is \${day}.\`\\n}\\ngreet(\\"Bob\\", \\"Tuesday\\");\\n// Hello Bob, today is Tuesday"},{"name":"Variable Number Of Arguments","text":"function sumOf(...numbers: number[]): number {\\n    let sum = 0;\\n    for (let number of numbers) {\\n        sum += number;\\n    }\\n    return sum;\\n}\\nsumOf(42, 597, 12);"},{"name":"Function Type","text":"function makeIncrementer():(number) => number {\\n    function addOne(number: number): number {\\n        return 1 + number;\\n    }\\n    return addOne;\\n}\\nlet increment = makeIncrementer();\\nincrement(7);\\n\\n// makeIncrementer can also be written in a shorter way:\\nlet makeIncrementer = () => (number: number) => 1 + number;"},{"name":"Map","text":"let numbers = [20, 19, 7, 12];\\nnumbers.map((it) => 3 * it);\\n// [ 60, 57, 21, 36 ]"},{"name":"Sort","text":"[1, 5, 3, 12, 2].sort();\\n// [ 1, 2, 3, 5, 12 ]"},{"name":"Class Declaration","text":"class Shape {\\n    numberOfSides = 0;\\n    simpleDescription(){\\n        return \`A shape with \${this.numberOfSides} sides.\`;\\n    }\\n}"},{"name":"Class Usage","text":"let shape = new Shape();\\nshape.numberOfSides = 7;\\nlet shapeDescription = shape.simpleDescription();\\n// A shape with 7 sides."},{"name":"Subclass","text":"class NamedShape {\\n    numberOfSides: number = 0;\\n    name: string;\\n\\n    constructor(name: string) {\\n        this.name = name;\\n    }\\n\\n    simpleDescription():string {\\n        return \`A shape with \${this.numberOfSides} sides.\`;\\n    }\\n}\\n\\nclass Square extends NamedShape {\\n    sideLength: number;\\n\\n    constructor(sideLength: number, name: string) {\\n        super(name);\\n        this.sideLength = sideLength;\\n        this.numberOfSides = 4;\\n    }\\n\\n    area(): number {\\n        return this.sideLength * this.sideLength;\\n    }\\n\\n    simpleDescription(): string {\\n        return \`A square with sides of length \${this.sideLength}.\`;\\n    }\\n}\\n\\nlet test = new Square(5.2, \\"square\\");\\ntest.area();\\ntest.simpleDescription();"},{"name":"Checking Type","text":"let movieCount = 0;\\nlet songCount = 0;\\n\\nfor (let item in library) {\\n    if (item instanceof Movie) {\\n        ++movieCount;\\n    } else if (item instanceof Song) {\\n        ++songCount;\\n    }\\n}"},{"name":"Downcasting","text":"for (let current in someObjects) {\\n    if (current instanceof Movie) {\\n        console.log(\`Movie: '\${current.name}', \` +\\n            \`dir. \${current.director}\`);\\n    }\\n}\\n// TypeScript doesn't have a built-in way to downcast,\\n// but the type can be checked with \`instanceof\`"},{"name":"Protocol","text":"interface Nameable {\\n    name():string;\\n};\\n\\nfunction f(x: Nameable) {\\n    console.log(\`Name is \${x.name()}\`);\\n}"}]}]`);
+    const mainLangName = "Haxe";
+    const mainLang = languages.find(lang => lang.name === mainLangName);
+
+    function update(otherLang)
+    {
+
+      const compareSection = document.getElementById("compare");
+
+      if (!otherLang)
+      {
+        compareSection.innerHTML = "Please choose a language from the drop-down above.";
+        return;
+      }
+
+      compareSection.innerHTML = "";
+
+      const mainLangSnippets = mainLang.snippets;
+      const otherLangSnippets = otherLang.snippets;
+      const otherLangSnippetNames = otherLangSnippets.map(snippet => snippet.name);
+
+      for (mainLangSnippet of mainLangSnippets) {
+        if (otherLangSnippetNames.indexOf(mainLangSnippet.name) === -1) {
+          continue;
+        }
+        const otherLangSnippet = otherLangSnippets.find(snippet => snippet.name === mainLangSnippet.name);
+
+        const caseContainer = document.createElement("div");
+        caseContainer.className = "case";
+        compareSection.appendChild(caseContainer);
+        const caseTitle = document.createElement("h2");
+        caseTitle.textContent = mainLangSnippet.name;
+        caseContainer.appendChild(caseTitle);
+
+        const pairContainer = document.createElement("div");
+        pairContainer.className = "pair";
+        caseContainer.appendChild(pairContainer);
+
+        const pairLeft = document.createElement("div");
+        pairLeft.className = "card";
+        pairContainer.appendChild(pairLeft);
+        const pairRight = document.createElement("div");
+        pairRight.className = "card";
+        pairContainer.appendChild(pairRight);
+
+        const nameLeft = document.createElement("div");
+        nameLeft.className = "language-name";
+        nameLeft.textContent = mainLangName;
+        pairLeft.appendChild(nameLeft);
+
+        const preLeft = document.createElement("pre");
+        const codeLeft = document.createElement("code");
+        codeLeft.className = "hljs " + mainLang.id;
+        codeLeft.textContent = mainLangSnippet.text;
+        preLeft.appendChild(codeLeft);
+        pairLeft.appendChild(preLeft);
+
+        const nameRight = document.createElement("div");
+        nameRight.className = "language-name";
+        nameRight.textContent = otherLang.name;
+        pairRight.appendChild(nameRight);
+
+        const preRight = document.createElement("pre");
+        const codeRight = document.createElement("code");
+        codeRight.className = "hljs " + otherLang.id;
+        codeRight.textContent = otherLangSnippet.text;
+        preRight.appendChild(codeRight);
+        pairRight.appendChild(preRight);
+      }
+      hljs.highlightAll();
+    }
+
+    const select = document.getElementById("language-select");
+    select.addEventListener("change", (event) => {
+      const otherLangName = event.target.value;
+      const otherLang = languages.find(lang => lang.name === otherLangName);
+      if (otherLang) {
+        history.pushState(undefined, undefined, `${document.location.pathname}?language=${otherLang.id}`);
+        update(otherLang);
+      }
+    });
+
+    function updateFromSearchParams()
+    {
+      const searchParams = new URL(document.location.href).searchParams;
+      const langParam = searchParams.get("language");
+      let defaultLang = undefined;
+      if (langParam)
+      {
+        defaultLang = languages.find(lang => lang.id === langParam);
+        if (defaultLang)
+        {
+          select.value = defaultLang.name;
+        }
+      }
+      console.log(defaultLang);
+      if (!defaultLang)
+      {
+        defaultLang = languages.find(lang => lang.name === select.value);
+      }
+      console.log(defaultLang, select.value);
+      update(defaultLang);
+    }
+
+    addEventListener("popstate", function()
+    {
+      updateFromSearchParams();
+    });
+
+    updateFromSearchParams();
+
+  </script>
+</body>
+</html>
