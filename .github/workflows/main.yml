@@ -19,7 +19,7 @@ jobs:
         run: npm run build
       - name: Deploy to gh-pages branch
         if: ${{ github.repository_owner == 'joshtynjala' && github.event_name != 'pull_request' && github.ref_name == 'main' }}
-        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        uses: JamesIves/github-pages-deploy-action@v4.7.3
         with:
           branch: gh-pages
           folder: _site
