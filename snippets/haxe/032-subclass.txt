@@ -6,7 +6,7 @@ class NamedShape {
         this.name = name;
     }
 
-    public function simpleDescription():string {
+    public function simpleDescription():String {
         return 'A shape with ${numberOfSides} sides.';
     }
 }
@@ -14,7 +14,7 @@ class NamedShape {
 class Square extends NamedShape {
     public var sideLength:Float;
 
-    public function new(sideLength:Float, name: string) {
+    public function new(sideLength:Float, name:String) {
         super(name);
         this.sideLength = sideLength;
         this.numberOfSides = 4;
