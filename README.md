@@ -1,5 +1,7 @@
 # haxe-is-like-other-programming-languages
 
+Source code for [Haxe is like other programming languages](https://joshtynjala.github.io/haxe-is-like-other-programming-languages/), a simple website to compare Haxe's syntax to the syntax of various other popular programming languages — including TypeScript, C#, Kotlin, Swift, Go, and ActionScript 3.0.
+
 Built with the [Eleventy](https://11ty.dev/) static site generator.
 
 ## Prerequisites
