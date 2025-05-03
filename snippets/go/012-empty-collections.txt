@@ -1,0 +1,2 @@
+var emptyArray []string
+var emptyDictionary = make(map[interface{}]interface{})

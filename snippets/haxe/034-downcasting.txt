@@ -1,0 +1,7 @@
+for (current in library) {
+    var movie = Std.downcast(current, Movie);
+    if (movie != null) {
+        trace('Movie: \'${movie.name}\', ' +
+	        'dir. ${movie.director}')
+    }
+}

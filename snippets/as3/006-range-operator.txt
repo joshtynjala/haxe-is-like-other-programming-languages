@@ -1,0 +1,11 @@
+// AS3 doesn't include a range operator
+// it uses C-style for loops instead.
+const names:Array = ["Anna", "Alex", "Brian", "Jack"];
+const count:int = names.length;
+for (var i:int = 0; i < count; i++) {
+    trace("Person " + (i + 1) + " is called " + names[i]);
+}
+// Person 1 is called Anna
+// Person 2 is called Alex
+// Person 3 is called Brian
+// Person 4 is called Jack

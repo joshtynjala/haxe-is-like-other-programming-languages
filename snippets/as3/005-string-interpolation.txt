@@ -1,0 +1,4 @@
+var apples:int = 3;
+var oranges:int = 5;
+var fruitSummary:String = "I have " + (apples + oranges) +
+                   " pieces of fruit.";

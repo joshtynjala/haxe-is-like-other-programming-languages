@@ -1,0 +1,2 @@
+var emptyArray:Array<String> = [];
+var emptyDictionary:Map<String, String> = [];

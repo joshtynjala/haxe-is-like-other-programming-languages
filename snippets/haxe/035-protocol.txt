@@ -1,0 +1,7 @@
+interface Nameable {
+    function name():String;
+}
+
+function f(x:Nameable) {
+    trace('Name is ${x.name()}');
+}

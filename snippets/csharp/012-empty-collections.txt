@@ -1,0 +1,2 @@
+var emptyList = new List<string>();
+var emptyDictionary = new Dictionary<string, string>();

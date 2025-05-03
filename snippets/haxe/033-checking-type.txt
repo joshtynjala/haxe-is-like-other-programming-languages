@@ -1,0 +1,10 @@
+var movieCount = 0;
+var songCount = 0;
+
+for (item in library) {
+    if (Std.isOfType(item, Movie)) {
+        ++movieCount;
+    } else if (Std.isOfType(item, Song)) {
+        ++songCount;
+    }
+}

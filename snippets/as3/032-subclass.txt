@@ -1,0 +1,40 @@
+package {
+    public class NamedShape {
+        public var numberOfSides:int = 0;
+        public var name:String;
+
+        public function NamedShape(name:String) {
+            this.name = name;
+        }
+
+        public function simpleDescription():String {
+            return "A shape with " + numberOfSides +
+                " sides.";
+        }
+    }
+}
+
+package {
+    public class Square extends NamedShape {
+        public var sideLength:Number;
+
+        public function Square(sideLength:Number, name:String) {
+            super(name);
+            this.sideLength = sideLength;
+            numberOfSides = 4;
+        }
+
+        public function area():Number {
+            return sideLength * sideLength;
+        }
+
+        public function simpleDescription():String {
+            return "A square with sides of length " +
+                sideLength + ".";
+        }
+    }
+}
+
+var test:Square = new Square(5.2, "square");
+test.area();
+test.simpleDescription();

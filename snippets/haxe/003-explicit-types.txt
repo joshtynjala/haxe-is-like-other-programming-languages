@@ -1,0 +1,1 @@
+final explicitDouble:Float = 70.0;

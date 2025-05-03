@@ -1,0 +1,8 @@
+names := [4]string{"Anna", "Alex", "Brian", "Jack"}
+for _, value := range(names) {
+    fmt.Printf("Person is called %v\n", value)
+}
+// Person is called Anna
+// Person is called Alex
+// Person is called Brian
+// Person is called Jack

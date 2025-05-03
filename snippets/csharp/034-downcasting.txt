@@ -1,0 +1,7 @@
+foreach (var current in library) {
+    var movie = current as Movie;
+    if (movie != null) {
+        Console.WriteLine($"Movie: '{movie.name}', " +
+            $"dir. {movie.director}");
+    }
+}

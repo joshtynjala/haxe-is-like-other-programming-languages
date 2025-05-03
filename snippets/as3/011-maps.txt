@@ -1,0 +1,4 @@
+var occupations:Dictionary = new Dictionary();
+occupations["Malcolm"] = "Captain";
+occupations["Kaylee"] = "Mechanic";
+occupations["Jayne"] = "Public Relations";

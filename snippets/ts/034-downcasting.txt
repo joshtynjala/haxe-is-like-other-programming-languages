@@ -1,0 +1,8 @@
+for (let current in someObjects) {
+    if (current instanceof Movie) {
+        console.log(`Movie: '${current.name}', ` +
+            `dir. ${current.director}`);
+    }
+}
+// TypeScript doesn't have a built-in way to downcast,
+// but the type can be checked with `instanceof`

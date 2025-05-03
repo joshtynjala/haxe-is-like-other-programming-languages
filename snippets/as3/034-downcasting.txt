@@ -1,0 +1,7 @@
+for each (var current:MediaItem in library) {
+    var movie = current as Movie;
+    if (movie != null) {
+        trace("Movie: '" + movie.name + ", " +
+	        "dir. " + movie.director);
+    }
+}

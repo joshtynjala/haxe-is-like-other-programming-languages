@@ -1,0 +1,6 @@
+var occupationsMutable = new Dictionary<string, string>
+{
+    ["Malcolm"] = "Captain",
+    ["Kaylee"] = "Mechanic"
+};
+occupationsMutable["Jayne"] = "Public Relations";

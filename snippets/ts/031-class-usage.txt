@@ -1,0 +1,4 @@
+let shape = new Shape();
+shape.numberOfSides = 7;
+let shapeDescription = shape.simpleDescription();
+// A shape with 7 sides.

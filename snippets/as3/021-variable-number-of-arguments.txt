@@ -1,0 +1,8 @@
+function sumOf(...numbers: Array):Number {
+    var sum:Number = 0;
+    for each(var number:Number in numbers) {
+        sum += number;
+    }
+    return sum;
+}
+sumOf(42, 597, 12);

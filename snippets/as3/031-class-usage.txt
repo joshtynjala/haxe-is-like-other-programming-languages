@@ -1,0 +1,4 @@
+var shape:Shape = new Shape();
+shape.numberOfSides = 7;
+var shapeDescription:String = shape.simpleDescription();
+// A shape with 7 sides.

@@ -1,0 +1,11 @@
+function makeIncrementer():(Float) -> Float {
+    function addOne(number: Float): Float {
+        return 1 + number;
+    }
+    return addOne;
+}
+var increment = makeIncrementer();
+increment(7);
+
+// makeIncrementer can also be written in a shorter way:
+var makeIncrementer = () -> (number: Float) -> 1 + number;

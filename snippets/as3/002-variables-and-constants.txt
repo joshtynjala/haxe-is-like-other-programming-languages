@@ -1,0 +1,5 @@
+var myVariable = 42;
+myVariable = 50;
+const myConstant = 42;
+// note: AS3 does not support type inference
+// these variables will default to the * type

@@ -1,0 +1,12 @@
+let occupations = new Map([
+    ["Malcolm", "Captain"],
+    ["Kaylee", "Mechanic"]
+]);
+occupations.set("Jayne", "Public Relations");
+
+// alternatively, object literals work like maps with string keys
+let occupations = {
+    "Malcolm": "Captain",
+    "Kaylee": "Mechanic",
+};
+occupations["Jayne"] = "Public Relations";

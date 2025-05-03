@@ -1,0 +1,9 @@
+final apples = 3;
+final oranges = 5;
+final fruitSummary = 'I have ${apples + oranges} ' +
+                   'pieces of fruit.';
+
+// use $ instead of ${} for simple var names
+final totalFruit = apples + oranges;
+final fruitSummary = 'I have $totalFruit ' +
+                   'pieces of fruit.';

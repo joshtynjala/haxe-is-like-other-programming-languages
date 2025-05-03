@@ -1,0 +1,9 @@
+package {
+    public class Shape {
+        public var numberOfSides:int = 0;
+        public function simpleDescription():String {
+            return "A shape with " +
+                this.numberOfSides + " sides.";
+        }
+    }
+}

@@ -1,0 +1,9 @@
+import * as _ from 'lodash';
+const names = ["Anna", "Alex", "Brian", "Jack"];
+for (let name of names) {
+    console.log(`Person is called ${name}`)
+}
+// Person is called Anna
+// Person is called Alex
+// Person is called Brian
+// Person is called Jack

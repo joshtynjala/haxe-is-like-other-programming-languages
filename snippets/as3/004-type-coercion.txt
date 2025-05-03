@@ -1,0 +1,4 @@
+var label:String = "The width is ";
+var width:int = 94;
+var widthLabel:String = label + width;
+// The width is 94

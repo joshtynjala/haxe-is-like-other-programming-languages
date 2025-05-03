@@ -1,0 +1,7 @@
+var numbers:Array = [20, 19, 7, 12];
+function mapFunction(it:Number, index:int, source:Array):Number
+{
+    return 3 * it;
+}
+numbers.map(mapFunction);
+// [ 60, 57, 21, 36 ]

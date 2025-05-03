@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Haxe is like other programming languages</title>
+<style>
+  html {
+    font-family: sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    margin: 0;
+    padding: 1em;
+  }
+  h1 {
+    font-weight: normal;
+    text-align: center;
+  }
+  h1 .language-name {
+    font-size: 1em;
+    font-weight: bold;
+  }
+  .case {
+    text-align: center;
+  }
+  .pair {
+    text-align: left;
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .case .card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  .case .card pre {
+    background: #fff;
+    flex-grow: 1;
+    padding: 0.5em;
+  }
+  footer {
+    font-size: 0.9em;
+    padding-top: 1em;
+    margin-top: 1em;
+    border-top: solid 1px #ccc;
+  }
+</style>
+<link rel="stylesheet" href="css/github.min.css">
+<script src="js/highlight.min.js" type="text/javascript"></script>
+</head>
+<body>
+  <h1>
+    <span class="language-name">Haxe</span> is like
+    <select id="language-select" class="language-name">
+      {% for item in languages %}
+        {% if item.name != "Haxe" %}
+      <option{% if item.name == "TypeScript" %} selected{% endif %}>{{ item.name }}</option>
+        {% endif %}
+      {% endfor %}
+    </select>
+  </h1>
+  <div id="compare">
+  </div>
+  <footer>
+    <p>Made by <a href="https://github.com/joshtynjala">Josh Tynjala</a>, who also created <a href="https://feathersui.com/">Feathers UI</a> and is a core contibutor to <a href="https://openfl.org/">OpenFL</a>.</p>
+    <p>Thanks to the authors of the following pages for the inspiration, and for the code samples for each language used in the comparisons.</p>
+    <ul>
+      <li><a href="https://ttu.github.io/kotlin-is-like-csharp/">Kotlin is like C#</a></li>
+      <li><a href="https://gi-no.github.io/kotlin-is-like-typescript/">Kotlin is like TypeScript</a></li>
+      <li><a href="https://nilhcem.com/swift-is-like-kotlin/">Swift is like Kotlin</a></li>
+      <li><a href="https://repo.tiye.me/jiyinyiyong/swift-is-like-go/">Swift is like Go</a></li>
+    </ul>
+  </footer>
+  <script type="text/javascript">
+    const languages = JSON.parse(`{{ languages | toJsonForTemplateString }}`);
+    const mainLangName = "Haxe";
+    const mainLang = languages.find(lang => lang.name === mainLangName);
+
+    function update(otherLang)
+    {
+
+      const compareSection = document.getElementById("compare");
+
+      if (!otherLang)
+      {
+        compareSection.innerHTML = "Please choose a language from the drop-down above.";
+        return;
+      }
+
+      compareSection.innerHTML = "";
+
+      const mainLangSnippets = mainLang.snippets;
+      const otherLangSnippets = otherLang.snippets;
+      const otherLangSnippetNames = otherLangSnippets.map(snippet => snippet.name);
+
+      for (mainLangSnippet of mainLangSnippets) {
+        if (otherLangSnippetNames.indexOf(mainLangSnippet.name) === -1) {
+          continue;
+        }
+        const otherLangSnippet = otherLangSnippets.find(snippet => snippet.name === mainLangSnippet.name);
+
+        const caseContainer = document.createElement("div");
+        caseContainer.className = "case";
+        compareSection.appendChild(caseContainer);
+        const caseTitle = document.createElement("h2");
+        caseTitle.textContent = mainLangSnippet.name;
+        caseContainer.appendChild(caseTitle);
+
+        const pairContainer = document.createElement("div");
+        pairContainer.className = "pair";
+        caseContainer.appendChild(pairContainer);
+
+        const pairLeft = document.createElement("div");
+        pairLeft.className = "card";
+        pairContainer.appendChild(pairLeft);
+        const pairRight = document.createElement("div");
+        pairRight.className = "card";
+        pairContainer.appendChild(pairRight);
+
+        const nameLeft = document.createElement("div");
+        nameLeft.className = "language-name";
+        nameLeft.textContent = mainLangName;
+        pairLeft.appendChild(nameLeft);
+
+        const preLeft = document.createElement("pre");
+        const codeLeft = document.createElement("code");
+        codeLeft.className = "hljs " + mainLang.id;
+        codeLeft.textContent = mainLangSnippet.text;
+        preLeft.appendChild(codeLeft);
+        pairLeft.appendChild(preLeft);
+
+        const nameRight = document.createElement("div");
+        nameRight.className = "language-name";
+        nameRight.textContent = otherLang.name;
+        pairRight.appendChild(nameRight);
+
+        const preRight = document.createElement("pre");
+        const codeRight = document.createElement("code");
+        codeRight.className = "hljs " + otherLang.id;
+        codeRight.textContent = otherLangSnippet.text;
+        preRight.appendChild(codeRight);
+        pairRight.appendChild(preRight);
+      }
+      hljs.highlightAll();
+    }
+
+    const select = document.getElementById("language-select");
+    select.addEventListener("change", (event) => {
+      const otherLangName = event.target.value;
+      const otherLang = languages.find(lang => lang.name === otherLangName);
+      if (otherLang) {
+        history.pushState(undefined, undefined, `${document.location.pathname}?language=${otherLang.id}`);
+        update(otherLang);
+      }
+    });
+
+    function updateFromSearchParams()
+    {
+      const searchParams = new URL(document.location.href).searchParams;
+      const langParam = searchParams.get("language");
+      let defaultLang = undefined;
+      if (langParam)
+      {
+        defaultLang = languages.find(lang => lang.id === langParam);
+        if (defaultLang)
+        {
+          select.value = defaultLang.name;
+        }
+      }
+      console.log(defaultLang);
+      if (!defaultLang)
+      {
+        defaultLang = languages.find(lang => lang.name === select.value);
+      }
+      console.log(defaultLang, select.value);
+      update(defaultLang);
+    }
+
+    addEventListener("popstate", function()
+    {
+      updateFromSearchParams();
+    });
+
+    updateFromSearchParams();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+function makeIncrementer():Function {
+    function addOne(number:Number):Number {
+        return 1 + number;
+    }
+    return addOne;
+}
+var increment:Function = makeIncrementer();
+increment(7);
+// AS3 doesn't support specifying parameters and
+// returns for function types

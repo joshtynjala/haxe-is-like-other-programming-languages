@@ -1,0 +1,2 @@
+var emptyArray:Array = [];
+var emptyDictionary:Dictionary = new Dictionary();

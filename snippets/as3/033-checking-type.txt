@@ -1,0 +1,10 @@
+var movieCount:int = 0;
+var songCount:int = 0;
+
+for each (var item:MediaItem in library) {
+    if (item is Movie) {
+        ++movieCount;
+    } else if (item is Song) {
+        ++songCount;
+    }
+}

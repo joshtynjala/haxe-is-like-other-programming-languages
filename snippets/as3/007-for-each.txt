@@ -1,0 +1,8 @@
+var names:Array = ["Anna", "Alex", "Brian", "Jack"];
+for each (var name:String in names) {
+    trace("Person is called " + name);
+}
+// Person is called Anna
+// Person is called Alex
+// Person is called Brian
+// Person is called Jack
