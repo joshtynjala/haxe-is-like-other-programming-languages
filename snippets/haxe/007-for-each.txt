@@ -1,6 +1,6 @@
 var names = ["Anna", "Alex", "Brian", "Jack"];
 for (name in names) {
-    trace('Person is called $name');
+    trace('Person is called ${name}');
 }
 // Person is called Anna
 // Person is called Alex

@@ -7,7 +7,7 @@ class NamedShape {
     }
 
     public function simpleDescription():string {
-        return 'A shape with $numberOfSides sides.';
+        return 'A shape with ${numberOfSides} sides.';
     }
 }
 
@@ -25,7 +25,7 @@ class Square extends NamedShape {
     }
 
     public function simpleDescription():String {
-        return 'A square with sides of length $sideLength.';
+        return 'A square with sides of length ${sideLength}.';
     }
 }
 
