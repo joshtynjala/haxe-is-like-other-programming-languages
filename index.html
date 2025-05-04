@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Haxe is like other programming languages</title>
 <style>
   html {
@@ -13,6 +14,18 @@
   body {
     margin: 0;
     padding: 1em;
+  }
+  select {
+    text-align: center;
+  }
+  footer {
+    font-size: 0.9em;
+    padding-top: 1em;
+    margin-top: 1em;
+    border-top: solid 1px #ccc;
+  }
+  pre {
+    overflow: auto;
   }
   h1 {
     font-weight: normal;
@@ -37,17 +50,12 @@
     flex-direction: column;
     flex-grow: 1;
     flex-basis: 0;
+    max-width: 100%;
   }
   .case .card pre {
     background: #fff;
     flex-grow: 1;
     padding: 0.5em;
-  }
-  footer {
-    font-size: 0.9em;
-    padding-top: 1em;
-    margin-top: 1em;
-    border-top: solid 1px #ccc;
   }
 </style>
 <link rel="stylesheet" href="css/github.min.css">
