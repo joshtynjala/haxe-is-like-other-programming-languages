@@ -1,6 +1,6 @@
 function sumOf(...numbers:Float):Float {
     var sum = 0.0;
-    for (number of numbers) {
+    for (number in numbers) {
         sum += number;
     }
     return sum;
