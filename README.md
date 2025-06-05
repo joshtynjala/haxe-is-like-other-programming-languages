@@ -4,6 +4,17 @@ Source code for [Haxe is like other programming languages](https://joshtynjala.g
 
 Built with the [Eleventy](https://11ty.dev/) static site generator.
 
+## Credits
+
+Inspired by similar comparisons between other programming languges:
+
+- [Kotlin is like TypeScript](https://github.com/gi-no/kotlin-is-like-typescript)
+- [TypeScript is like C#](https://github.com/CharlieDigital/typescript-is-like-csharp)
+- [Kotlin is like C#](https://github.com/ttu/kotlin-is-like-csharp)
+- [Swift is like Kotlin](https://github.com/Nilhcem/swift-is-like-kotlin)
+- [Swift is like Go](https://github.com/tiye/swift-is-like-go)
+- [Swift is like C#](https://github.com/myquay/swift-is-like-c-sharp)
+
 ## Prerequisites
 
 Install [Node.js](https://nodejs.org/), if you don't have it already.
